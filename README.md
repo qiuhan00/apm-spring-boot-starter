@@ -26,13 +26,35 @@ arms:
 ```
 以上配置信息中，切点信息由具体应用决定
 
-## 2. Supported
+## 2. 自定义信息上报
+### 2.1 注入 tracer
+```
+    @Autowired
+    Tracer tracer;
+```
+### 2.2 上报信息
+```
+    Span span = tracer.spanBuilder("test_span_name")
+            .setParent(Context.current().with(Span.current()))
+            .startSpan();
+    try (Scope scope = span.makeCurrent()){
+        // do your logic
+        // ...
+    }catch (Exception e){
+        span.setStatus(StatusCode.ERROR, e.getMessage());
+        throw e;
+    }finally {
+        span.end();
+    }
+```
+
+## 3. Supported
 目前1.0.0版本，仅支持：
 - 使用tomcat容器的spring-boot-web项目
 - feign的okhttp远程调用
 - mybatis的sql执行上传
 
-## 3. Feature
+## 4. Feature
 - undertow容器支持
 - httpclient、httpurlconnection支持
 - hibernate、jpa支持

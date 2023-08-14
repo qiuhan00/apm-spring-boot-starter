@@ -78,8 +78,8 @@ public class TraceAutoConfiguration {
 
         SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
                 .addSpanProcessor(BatchSpanProcessor.builder(OtlpGrpcSpanExporter.builder()
-                        .setEndpoint(context.getEnvironment().getProperty("arms.endpoint", "http://tracing-analysis-dc-sh.aliyuncs.com:8090/"))
-                        .addHeader("Authentication", context.getEnvironment().getProperty("arms.key", "fzy881oles@5fa24010b7d7269_fzy881oles@53df7ad2afe8301"))
+                        .setEndpoint(context.getEnvironment().getProperty("arms.endpoint", "http://xxxx.aliyuncs.com:8090/"))
+                        .addHeader("Authentication", context.getEnvironment().getProperty("arms.key", "xxxxxxx"))
                         .build()).build())
                 .setResource(resource)
                 .build();

@@ -1,4 +1,4 @@
-# zeus-infra-apm
+# apm-spring-boot-starter
 基于 opentelemetry 手动埋点上报调用链路信息
 
 ## 1. Quick Start
@@ -14,15 +14,15 @@
 ### 1.2 yml配置开关
 ```
 arms:
-  endpoint: http://tracing-analysis-dc-sh.aliyuncs.com:8090/ #接入点配置，未配置默认 http://tracing-analysis-dc-sh.aliyuncs.com:8090/
-  key: fzy881oles@5fa24010b7d7269_fzy881oles@53df7ad2afe8301 #鉴权token，未配置默认 fzy881oles@5fa24010b7d7269_fzy881oles@53df7ad2afe8301
+  endpoint: http://xxxxxxxxxx.aliyuncs.com:8090/ #接入点配置，未配置默认 http://xxxxxxxx.aliyuncs.com:8090/
+  key: xxxxxxxx #鉴权token，未配置默认 xxxxxx
   trace:
     enabled: true # 是否开启链路监控
   aop:
     enabled: true # 是否启用 aop
   pointExpression: # 切点配置，仅在 arms.aop.enabled=true 时生效
-    - com.shuinfo.decathlon.payment.service.*.*(..)
-    - com.shuinfo.decathlon.payment.controller.*.*(..)
+    - com.cfang.payment.service.*.*(..)
+    - com.cfang.payment.controller.*.*(..)
 ```
 以上配置信息中，切点信息由具体应用决定
 
